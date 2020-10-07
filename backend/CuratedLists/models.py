@@ -5,6 +5,8 @@ import uuid
 
 class Author(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    username = models.CharField(max_length=100, unique=True)
+    password = models.TextField()
     name = models.TextField()
     company = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
