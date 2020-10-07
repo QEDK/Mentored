@@ -1,0 +1,35 @@
+{
+    "userId": "1394409",
+    "registered_track": {
+        "frontend": {
+            "basic": {
+                "video1":{
+                    "link": "https://www.youtube.com/watch?v=UB1O30fR-EE&ab_channel=TraversyMedia",
+                    "time_of_video": 1.00,
+                    "time_watched":0.55,
+                    "mark_as_completed": true
+                },
+                "video2":{
+                    "link": "https://www.youtube.com/watch?v=UB1O30fR-EE&ab_channel=TraversyMedia",
+                    "time_of_video": 1.00,
+                    "time_watched":0.55,
+                    "mark_as_completed": false
+                }
+            },
+            "intermediate":{
+                "video1":{
+                    "link": "https://www.youtube.com/watch?v=UB1O30fR-EE&ab_channel=TraversyMedia",
+                    "time_of_video": 1.00,
+                    "time_watched":0.55,
+                    "mark_as_completed": true
+                },
+                "video2":{
+                    "link": "https://www.youtube.com/watch?v=UB1O30fR-EE&ab_channel=TraversyMedia",
+                    "time_of_video": 1.00,
+                    "time_watched":0.55,
+                    "mark_as_completed": false
+                }
+            }
+        }
+    }
+}
