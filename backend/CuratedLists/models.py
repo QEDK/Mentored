@@ -15,7 +15,7 @@ class Author(models.Model):
         self.created_date = timezone.now()
         self.save()
 
-class List(models.Model):
+class Curation(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     topic = models.CharField(max_length=200)
     blogs = models.TextField()
