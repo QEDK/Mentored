@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from CuratedLists import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/signin', views.signin, name='signin'),
+    path('api/signin/', views.signin, name='signin'),
+    path('api/signup', views.signup, name='signup'),
+    path('api/signup/', views.signup, name='signup'),
 ]
