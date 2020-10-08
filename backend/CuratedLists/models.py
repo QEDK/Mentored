@@ -5,8 +5,8 @@ import uuid
 
 class Author(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    username = models.CharField(max_length=100, unique=True, default=timezone.now)
-    password = models.TextField(default="password")
+    username = models.CharField(max_length=100, unique=True)
+    password = models.TextField()
     name = models.TextField()
     company = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
@@ -18,11 +18,7 @@ class Author(models.Model):
 class Curation(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     topic = models.CharField(max_length=200)
-    blogs = models.TextField()
-    books = models.TextField()
-    courses = models.TextField()
-    videos = models.TextField()
-    published_date = models.DateTimeField(default=timezone.now)
+    data = models.JSONField(default=dict)
 
     def publish(self):
         self.published_date = timezone.now()
