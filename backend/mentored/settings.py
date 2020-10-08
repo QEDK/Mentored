@@ -80,7 +80,6 @@ WSGI_APPLICATION = 'mentored.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'HOST': os.getenv('DB_HOST'),
             'PORT': '5432',
             'NAME': os.getenv('DB_NAME'),
             'USER': os.getenv('DB_USERNAME'),
@@ -88,7 +87,11 @@ DATABASES = {
         }
     }
 
-DATABASES['default']['HOST'] = '127.0.0.1'
+DATABASES['default']['HOST'] = f'/cloudsql/{os.getenv("DB_HOST")}'
+if os.getenv('GAE_INSTANCE'):
+    pass
+else:
+    DATABASES['default']['HOST'] = '127.0.0.1'
 
 
 # Password validation
