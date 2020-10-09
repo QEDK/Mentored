@@ -6,7 +6,7 @@ import FormContainer from '../components/FormContainer'
 const LoginPage = () => {
     return (
         <FormContainer>
-            <h1>Login</h1>
+            <h2>Login</h2>
             <Form>
                 <Form.Group controlId='email'>
                     <Form.Label>Email Address</Form.Label>
