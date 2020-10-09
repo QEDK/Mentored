@@ -80,7 +80,6 @@ WSGI_APPLICATION = 'mentored.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'PORT': '5432',
             'NAME': os.getenv('DB_NAME'),
             'USER': os.getenv('DB_USERNAME'),
             'PASSWORD': os.getenv('DB_PASSWORD'),
