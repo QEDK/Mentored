@@ -8,6 +8,7 @@ import ListPage from './pages/ListPage';
 import MentorsPage from './pages/MentorsPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/mentors' component={MentorsPage} exact />
           <Route path='/login' component={LoginPage} exact />
           <Route path='/signup' component={SignupPage} exact />
+          <Route path='/profile' component={ProfilePage} exact />
         </Container>
       </main>
       <Footer />
