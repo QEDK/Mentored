@@ -36,7 +36,7 @@ def signup(request):
                     content_type='application/json; charset=utf-8')
             else:
                 Author.objects.create(username=details['username'], password=details['password'], name=details['name'],
-                company=details['company'], created_date=details['created_date']) 
+                company=details['company']) 
                 response = HttpResponse(status=HTTPStatus.CREATED)
         except:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
