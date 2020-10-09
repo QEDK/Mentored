@@ -19,6 +19,7 @@ from CuratedLists import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
     path('api/signin', views.signin, name='signin'),
     path('api/signin/', views.signin, name='signin'),
     path('api/signup', views.signup, name='signup'),
