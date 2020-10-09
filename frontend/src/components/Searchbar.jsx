@@ -3,7 +3,7 @@ import { InputGroup, FormControl } from 'react-bootstrap'
 
 const Searchbar = () => {
     return (
-            <InputGroup className="mt-5 mb-3 pl-5 pr-5">
+            <InputGroup className="mt-5 mb-5 pl-5 pr-5">
                 <FormControl
                     placeholder="Search"
                     aria-label="Search"
