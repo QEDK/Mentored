@@ -1,6 +1,7 @@
 import json
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest
 from http import HTTPStatus
+from CuratedLists.models import Author
 
 MAX_AGE = 30*24*60*60  # 30 days
 
@@ -29,12 +30,13 @@ def signup(request):
     else:
         try:
             details = json.loads(request.body.decode('utf-8'))
-            if not new_username(details):
+            if usernameExists(details):
                 response = HttpResponseBadRequest(
                     content='{"error": "Username already exists."}',
                     content_type='application/json; charset=utf-8')
             else:
-                # perform db action
+                Author.objects.create(username=details['username'], password=details['password'], name=details['name'],
+                company=details['company']) 
                 response = HttpResponse(status=HTTPStatus.CREATED)
         except:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
@@ -48,13 +50,10 @@ def validate_session(request):
         return True
 
 def validate(uid, password):
-    if not new_uid(uid) and password == 'password':
+    if not usernameExists(uid) and password == 'password':
         return True
     else:
         return False
 
-def new_username(uid):
-    if uid == 'admin':  # check username in database
-        return False
-    else:
-        return True
+def usernameExists(uid):
+    return Author.objects.filter(username=uid).exists()
