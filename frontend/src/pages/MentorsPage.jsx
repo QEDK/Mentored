@@ -1,10 +1,16 @@
 import React from 'react'
+import AllMentors from '../components/AllMentors'
+import Searchbar from '../components/Searchbar'
 
 const MentorsPage = () => {
     return (
-        <div>
+        <>
+        <Searchbar />
+        <h4 className='text-center py-3'>
            Meet your mentor here!
-        </div>
+        </h4>
+           <AllMentors />
+        </>
     )
 }
 
