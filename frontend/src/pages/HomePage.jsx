@@ -1,10 +1,11 @@
 import React from 'react'
+import Searchbar from '../components/Searchbar'
 
 const HomePage = () => {
     return (
-        <div>
-            Curated Lists will be here
-        </div>
+        <>
+            <Searchbar />
+        </>
     )
 }
 
