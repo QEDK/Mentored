@@ -36,8 +36,11 @@ def signup(request):
                     content='{"error": "Username already exists."}',
                     content_type='application/json; charset=utf-8')
             else:
-                Author.objects.create(username=details['username'], password=details['password'], name=details['name'],
-                company=details['company']) 
+                Author.objects.create(
+                    username=details['username'],
+                    password=make_password(details['password']),
+                    name=details['name'],
+                    company=details['company'])
                 response = HttpResponse(status=HTTPStatus.CREATED)
         except:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
