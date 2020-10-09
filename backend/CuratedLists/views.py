@@ -1,5 +1,6 @@
 import json
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest
+from django.contrib.auth.hashers import check_password, make_password
 from http import HTTPStatus
 from CuratedLists.models import Author
 
@@ -50,7 +51,7 @@ def validate_session(request):
         return True
 
 def validate(uid, password):
-    if not usernameExists(uid) and password == 'password':
+    if usernameExists(uid) and check_password(password, Author.objects.get(username=uid).password):
         return True
     else:
         return False
