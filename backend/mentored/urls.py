@@ -24,4 +24,8 @@ urlpatterns = [
     path('api/signin/', views.signin, name='signin'),
     path('api/signup', views.signup, name='signup'),
     path('api/signup/', views.signup, name='signup'),
+    path('api/get_profile', views.get_profile, name='get_profile'),
+    path('api/get_profile/', views.get_profile, name='get_profile'),
+    path('api/get_topic', views.get_topic, name='get_topic'),
+    path('api/get_topic/', views.get_topic, name='get_topic'),
 ]
