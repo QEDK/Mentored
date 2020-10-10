@@ -46,6 +46,35 @@ def signup(request):
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
     return response
 
+def get_profile(request):
+    if request.method != 'GET':
+        response = HttpResponseNotAllowed(['GET'])
+    else:
+        try:
+            payload = json.loads(request.body.decode('utf-8'))
+            if not usernameExists(payload['username']):
+                response = HttpResponseBadRequest(
+                    content='{"error": "Username does not exist."}',
+                    content_type='application/json; charset=utf-8')
+            else:
+                # content = performdbaction()
+                response = HttpResponse()  # pass as content
+        except:
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
+
+def get_topic(request):
+    if request.method != 'GET':
+        response = HttpResponseNotAllowed(['GET'])
+    else:
+        try:
+            payload = json.loads(request.body.decode('utf-8'))
+            # content = performdbaction()
+            response = HttpResponse()  # pass as content
+        except:
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
+
 def validate_session(request):
     try:
         uid = request.get_signed_cookie('uid', max_age=MAX_AGE)
