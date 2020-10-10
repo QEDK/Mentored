@@ -7,8 +7,8 @@ const TrackCard = () => {
             <Card.Body>
                 {/* <a href={`/list/${track.id}`}>*/}
                 <a href='/list/1'>
-                    <Card.Text className="mb-2 text-muted">Created by: JuanPFlores from GitHub Education</Card.Text>
                     <Card.Title as='h6'>Frontend Web Developer</Card.Title>
+                    <Card.Text className="mb-2 text-muted">Created by: JuanPFlores from GitHub Education</Card.Text>
                 </a>
             </Card.Body>
         </Card>
