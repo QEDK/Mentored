@@ -15,10 +15,10 @@ def signin(request):
     else:
         try:
             credentials = json.loads(request.body.decode('utf-8'))
-            if validate(credentials['uid'], credentials['password']):
+            if validate(credentials['username'], credentials['password']):
                 response = HttpResponse()
-                response.set_signed_cookie('uid', credentials['uid'], max_age=MAX_AGE)
-                response.set_signed_cookie('loggedin', 'true', salt=credentials['uid'], max_age=MAX_AGE)
+                response.set_signed_cookie('uid', credentials['username'], max_age=MAX_AGE)
+                response.set_signed_cookie('loggedin', 'true', salt=credentials['username'], max_age=MAX_AGE)
             else:
                 response = HttpResponse(status=HTTPStatus.UNAUTHORIZED)
         except:
