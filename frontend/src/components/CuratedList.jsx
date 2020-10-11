@@ -18,9 +18,6 @@ const CuratedList = () => {
                 <Col sm={12} md={6} lg={4} xl={3}>
                     <TrackCard />
                 </Col>
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <TrackCard />
-                </Col>
             </Row>
         </>
     )

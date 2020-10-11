@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 import ListPage from './pages/ListPage';
 import MentorsPage from './pages/MentorsPage';
@@ -16,7 +17,8 @@ function App() {
       <Header />
       <main className='py-3'>
         <Container>
-          <Route path='/' component={HomePage} exact />
+          <Route path='/' component={LandingPage} exact />
+          <Route path='/curated' component={HomePage} exact />
           {/* <Route path='/list/:id' component={ListPage} exact /> */}
           <Route path='/list/1' component={ListPage} exact />
           <Route path='/mentors' component={MentorsPage} exact />

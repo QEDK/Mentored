@@ -1,3 +1,46 @@
 main {
-    min-height: 80vh;
+    min-height: 85vh;
+}
+
+.landspan{
+    color: #f8c006;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.landspan:before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 4px;
+    top: 5;
+    left: 0;
+    background-color: #f8c006;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.landspan:hover:before{
+    text-decoration: underline;
+    cursor: pointer;
+    visibility: visible;
+    width: 80%;
+}
+
+.landimg{
+    width: 60vw;
+}
+
+@media screen and (min-width:320px) and (max-width: 480px){
+    .landspan{
+        font-size: 35px;
+    }
+
+    h2{
+        font-size: 25px;
+    }
+
+    .landimg{
+        width: 95vw;
+    }
 }
