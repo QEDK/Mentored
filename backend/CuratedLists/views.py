@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadReq
 from django.contrib.auth.hashers import check_password, make_password
 from http import HTTPStatus
 from CuratedLists.models import Author
+from CuratedLists.models import Curation
 from django.core import serializers
 
 MAX_AGE = 30*24*60*60  # 30 days
@@ -58,8 +59,8 @@ def get_profile(request):
                     content='{"error": "Username does not exist."}',
                     content_type='application/json; charset=utf-8')
             else:
-                profile = Author.objects.filter(username=payload['username'])
-                response = HttpResponse(status=HTTPStatus.OK, content=serializers.serialize("json", profile))
+                information = Curation.objects.filter(author=Author.objects.get(username=payload['username']))
+                response = HttpResponse(status=HTTPStatus.OK, content=serializers.serialize("json", information))
         except:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
     return response
@@ -70,7 +71,7 @@ def get_topic(request):
     else:
         try:
             payload = json.loads(request.body.decode('utf-8'))
-            curation = Curation.objects.filter(topic__icontains=payload['topic']) 
+            curation = Curation.objects.filter(topic__icontains=paload['topic']) 
             response = HttpResponse(status=HTTPStatus.OK, content=serializers.serialize("json", curation))
         except:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
