@@ -10,6 +10,8 @@ def index(request):
     return HttpResponse("Hello, world.")
 
 def signin(request):
+    if request.method == 'OPTIONS':
+        return HttpResponse()
     if request.method != 'POST':
         response = HttpResponseNotAllowed(['POST'])
     else:
@@ -26,6 +28,8 @@ def signin(request):
     return response
 
 def signup(request):
+    if request.method == 'OPTIONS':
+        return HttpResponse()
     if request.method != 'POST':
         response = HttpResponseNotAllowed(['POST'])
     else:
@@ -47,6 +51,8 @@ def signup(request):
     return response
 
 def get_profile(request):
+    if request.method == 'OPTIONS':
+        return HttpResponse()
     if request.method != 'GET':
         response = HttpResponseNotAllowed(['GET'])
     else:
@@ -64,6 +70,8 @@ def get_profile(request):
     return response
 
 def get_topic(request):
+    if request.method == 'OPTIONS':
+        return HttpResponse()
     if request.method != 'GET':
         response = HttpResponseNotAllowed(['GET'])
     else:
