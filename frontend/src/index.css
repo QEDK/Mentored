@@ -29,6 +29,7 @@ main {
 
 .landimg{
     width: 60vw;
+    text-align: left;
 }
 
 @media screen and (min-width:320px) and (max-width: 480px){
@@ -42,5 +43,10 @@ main {
 
     .landimg{
         width: 95vw;
+        text-align: left;
+    }
+
+    .landbtn{
+        font-size: 15px !important;
     }
 }
