@@ -94,6 +94,61 @@ def get_topic(request):
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
     return response
 
+def all_curations(request):
+    if request.method == 'OPTIONS':
+        return HttpResponse()
+    if request.method != 'GET':
+        response = HttpResponseNotAllowed(['GET'])
+    else:
+        try:
+            # perform dbaction()
+            response = HttpResponse(
+                status=HTTPStatus.OK,
+                # content=serializers.serialize("json", curation),
+                # content_type='application/json; charset=utf-8'
+            )
+        except Exception:
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
+
+def all_mentors(request):
+    if request.method == 'OPTIONS':
+        return HttpResponse()
+    if request.method != 'GET':
+        response = HttpResponseNotAllowed(['GET'])
+    else:
+        try:
+            # perform dbaction()
+            response = HttpResponse(
+                status=HTTPStatus.OK,
+                # content=serializers.serialize("json", curation),
+                # content_type='application/json; charset=utf-8'
+            )
+        except Exception:
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
+
+def add_curation(request):
+    if request.method == 'OPTIONS':
+        return HttpResponse()
+    if request.method != 'POST':
+        response = HttpResponseNotAllowed(['POST'])
+    else:
+        try:
+            if validate_session(request):
+                curation = json.loads(request.body.decode('utf-8'))
+                # perform dbaction()
+                response = HttpResponse(
+                    status=HTTPStatus.OK,
+                    # content=serializers.serialize("json", curation),
+                    # content_type='application/json; charset=utf-8'
+                )
+            else:
+                response = HttpResponse(status=HTTPStatus.FORBIDDEN)
+        except Exception:
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
+
 def validate_session(request):
     try:
         uid = request.get_signed_cookie('uid', max_age=MAX_AGE)
