@@ -1,8 +1,18 @@
-import React from 'react'
-// import { Link } from 'react-router-dom';
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
+import axios from 'axios'
 
 const ProfilePage = () => {
+     const [profile, setProfile] = useState({})
+    axios.get('https://mentored-n3wkrveexq-uc.a.run.app/api/get_topic', profile)
+        .then(res => {
+            setProfile(res)
+            console.log(res)
+        })
+        .catch(err=> {
+            console.error(err)
+        })
     return (
         <Row>
             <Col md={3}>
@@ -12,23 +22,25 @@ const ProfilePage = () => {
                         <Form.Label>Name</Form.Label>
                         <Form.Control type='name' placeholder='Enter Full Name'></Form.Control>
                     </Form.Group>
-                    <Form.Group controlId='email'>
-                        <Form.Label>Email Address</Form.Label>
-                        <Form.Control type='email' placeholder='Enter Email Address'></Form.Control>
+                    <Form.Group controlId='username'>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control name='username' type='text' placeholder='Enter Username'>
+                        </Form.Control>
                     </Form.Group>
-                    <Form.Group controlId='password'>
+                    {/* <Form.Group controlId='password'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control type='password' placeholder='Enter Password'></Form.Control>
+                    </Form.Group> */}
+                    <Form.Group controlId='company'>
+                        <Form.Label>Company</Form.Label>
+                        <Form.Control type='text' name='company' placeholder='Enter Company Name'></Form.Control>
                     </Form.Group>
-                    <Form.Group controlId='confirmPassword'>
-                        <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control type='password' placeholder='Confirm Password'></Form.Control>
-                    </Form.Group>
-                    <Button type='submit' variant='primary'>Update</Button>
+                    {/* <Button type='submit' variant='primary'>Update</Button> */}
                 </Form>
             </Col>
-            <Col md={9}>
-                <h2>My Curated Lists</h2>
+            <Col className='profilecur pl-5' md={9}>
+                <h2>Your Curated Lists</h2>
+                <Link to='/profile/makelist'><Button>Create New</Button></Link>
             </Col>
         </Row>
     )

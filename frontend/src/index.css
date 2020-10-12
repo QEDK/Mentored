@@ -49,4 +49,8 @@ main {
     .landbtn{
         font-size: 15px !important;
     }
+
+    .profilecur{
+        margin-top: 10px;
+    }
 }
