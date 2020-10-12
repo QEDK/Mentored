@@ -68,8 +68,11 @@ def get_profile(request):
                 author = json.loads(serializers.serialize('json', Author.objects.filter(username=payload['username'])))
                 curations = serializers.serialize('json', Curation.objects.filter(author=Author.objects.get(username=payload['username'])))
                 author[0]["curations"] = curations
-                response = HttpResponse(status=HTTPStatus.OK, content=json.dumps(author))
-        except:
+                response = HttpResponse(
+                    status=HTTPStatus.OK, content=json.dumps(author),
+                    content_type='application/json; charset=utf-8'
+                )
+        except Exception:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
     return response
 
@@ -82,8 +85,12 @@ def get_topic(request):
         try:
             payload = json.loads(request.body.decode('utf-8'))
             curation = Curation.objects.filter(topic__icontains=payload['topic']) 
-            response = HttpResponse(status=HTTPStatus.OK, content=serializers.serialize("json", curation))
-        except:
+            response = HttpResponse(
+                status=HTTPStatus.OK,
+                content=serializers.serialize("json", curation),
+                content_type='application/json; charset=utf-8'
+            )
+        except Exception:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
     return response
 
