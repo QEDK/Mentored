@@ -28,4 +28,10 @@ urlpatterns = [
     path('api/get_profile/', views.get_profile, name='get_profile'),
     path('api/get_topic', views.get_topic, name='get_topic'),
     path('api/get_topic/', views.get_topic, name='get_topic'),
+    path('api/all_curations', views.all_curations, name='all_curations'),
+    path('api/all_curations/', views.all_curations, name='all_curations'),
+    path('api/all_mentors', views.all_mentors, name='all_mentors'),
+    path('api/all_mentors/', views.all_mentors, name='all_mentors'),
+    path('api/add_curation', views.add_curation, name='add_curation'),
+    path('api/add_curation/', views.add_curation, name='add_curation'),
 ]
