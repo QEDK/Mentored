@@ -55,8 +55,8 @@ def signup(request):
 def get_profile(request):
     if request.method == 'OPTIONS':
         return HttpResponse()
-    if request.method != 'GET':
-        response = HttpResponseNotAllowed(['GET'])
+    if request.method != 'POST':
+        response = HttpResponseNotAllowed(['POST'])
     else:
         try:
             payload = json.loads(request.body.decode('utf-8'))
@@ -79,8 +79,8 @@ def get_profile(request):
 def get_topic(request):
     if request.method == 'OPTIONS':
         return HttpResponse()
-    if request.method != 'GET':
-        response = HttpResponseNotAllowed(['GET'])
+    if request.method != 'POST':
+        response = HttpResponseNotAllowed(['POST'])
     else:
         try:
             payload = json.loads(request.body.decode('utf-8'))
