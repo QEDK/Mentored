@@ -3,18 +3,25 @@ import { Button, Col, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import FormContainer from '../components/FormContainer'
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 class LoginPage extends Component {
-    constructor() {
-        super();
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
+    constructor(props) {
+        super(props);
+        const { cookies } = props;
         this.state = {
             username: '',
             password: '',
             // loading: false,
             // errors: {}
+            loggedin: cookies.get('loggedin')
         };
     }
-    handleSubmit = (event) => {
+    handleSubmit = ( event) => {
         event.preventDefault();
         console.log('form submit')
         // this.setState({
@@ -26,8 +33,7 @@ class LoginPage extends Component {
         };
         axios
             .post('https://mentored-n3wkrveexq-uc.a.run.app/api/signin', userData)
-            .then((res) => {
-                console.log(document.cookie);
+            .then((loggedin) => {
                 // console.log(res);
                 // this.setState({
                 //     loading: false
@@ -35,6 +41,10 @@ class LoginPage extends Component {
                 // if(document.cookie.split('; ')[1] === "CookieConsent=true"){
                 // this.props.history.push('/');
                 // }
+                const { cookies } = this.props;
+
+                cookies.set('loggedin', loggedin, { path: '/' });
+                this.setState({ loggedin });
             })
             .catch((err) => {
                 this.setState({
@@ -75,7 +85,7 @@ class LoginPage extends Component {
                         </h6>
                     )} */}
                     <Button type='submit' variant='primary'
-                       >Login
+                    >Login
                         {/* {loading && (
                             <Spinner size={30} variant='primary' animation='border' />
                         )} */}
@@ -93,4 +103,4 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage
+export default withCookies(LoginPage)

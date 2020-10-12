@@ -19,7 +19,7 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
-                        <LinkContainer to='/'><Nav.Link><i className='fas fa-list-alt mr-2' aria-hidden="true"></i>Lists</Nav.Link></LinkContainer>
+                        <LinkContainer to='/curated'><Nav.Link><i className='fas fa-list-alt mr-2' aria-hidden="true"></i>Lists</Nav.Link></LinkContainer>
                         <LinkContainer to='/mentors'><Nav.Link><i className='fas fa-users mr-2' aria-hidden="true"></i>Mentors</Nav.Link></LinkContainer>
                         <LinkContainer to='/login'><Nav.Link><i className='fas fa-user mr-2' aria-hidden="true"></i>Login</Nav.Link></LinkContainer>
                         </Nav>
