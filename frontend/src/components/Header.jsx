@@ -3,7 +3,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import logo from '../assets/logo.png'
 
-const Header = () => {
+const Header = ({cookies}) => {
     const [user, setUser] = useState(false)
     useEffect(() => {
         // if (user === false) {
@@ -13,8 +13,12 @@ const Header = () => {
             console.log('header accessed')
             setUser(true);
         }
-    }, [])
-    console.log(user)
+    }, []);
+
+    function logout(){
+        document.cookie="loggedin=1234"
+        setUser(false)
+    }
     return (
         <header>
             <Navbar bg="bluescheme" variant='dark' expand="lg" collapseOnSelect>
