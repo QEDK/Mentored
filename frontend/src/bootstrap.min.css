@@ -5523,12 +5523,12 @@ input[type="button"].btn-block {
     color: rgba(255, 255, 255, 0.25)
 }
 
-.navbar-dark .navbar-nav .show>.nav-link,
+/* .navbar-dark .navbar-nav .show>.nav-link,
 .navbar-dark .navbar-nav .active>.nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-    /* color: #fff */
-}
+     color: #fff
+} */
 
 .navbar-dark .navbar-toggler {
     color: rgba(255, 255, 255, 0.6);
