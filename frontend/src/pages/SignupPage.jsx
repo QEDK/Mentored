@@ -1,28 +1,79 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer'
+import axios from 'axios'
 
-const SignupPage = () => {
+class SignupPage extends Component {
+    constructor() {
+        super();
+        // const { cookies } = props;
+        this.state = {
+            username: '',
+            password: '',
+            name: '',
+            company: ''
+            // loading: false,
+            // errors: {}
+            // loggedin: cookies.get('loggedin') || cookies.set('loggedin', "abcd", '/')
+        };
+    }
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('form submit')
+        // this.setState({
+        //     loading: true
+        // });
+        const newUserData = {
+            username: this.state.username,
+            password: this.state.password,
+            name: this.state.name,
+            company: this.state.company
+        };
+        axios
+            .post('https://mentored-n3wkrveexq-uc.a.run.app/api/signup', newUserData)
+            .then((newUserData) => {
+                console.log(newUserData)
+                this.props.history.push('/login')
+            })
+            .catch((err) => {
+                this.setState({
+                    errors: err.response,
+                    // loading: false
+                });
+            });
+    };
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    };
+    render(){
     return (
         <FormContainer>
-            <h2>Come, Join Our Community!</h2>
-            <Form>
+            <h6 className='text-center mt-3'>Are you an Industry Expert and want to help Mentor?</h6>
+            <h4 className='text-center'>Join us Today!</h4>
+            <Form noValidate onSubmit={this.handleSubmit}>
                 <Form.Group controlId='name'>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type='name' placeholder='Enter Full Name'></Form.Control>
+                    <Form.Control name='name' type='text' placeholder='Enter Full Name' value={this.state.name} onChange={this.handleChange}></Form.Control>
                 </Form.Group>
-                <Form.Group controlId='email'>
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control type='email' placeholder='Enter Email Address'></Form.Control>
+                <Form.Group controlId='username'>
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control name='username' type='text' placeholder='Enter Username'
+                        value={this.state.username}
+                        onChange={this.handleChange}></Form.Control>
                 </Form.Group>
                 <Form.Group controlId='password'>
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' placeholder='Enter Password'></Form.Control>
+                    <Form.Control name='password' type='password' placeholder='Enter Password'
+                        value={this.state.password}
+                        onChange={this.handleChange}></Form.Control>
                 </Form.Group>
-                <Form.Group controlId='confirmPassword'>
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type='password' placeholder='Confirm Password'></Form.Control>
+                <Form.Group controlId='company'>
+                    <Form.Label>Company</Form.Label>
+                    <Form.Control type='text' name='company' placeholder='Enter Company Name' value={this.state.company}
+                        onChange={this.handleChange}></Form.Control>
                 </Form.Group>
                 <Button type='submit' variant='primary'>SignUp</Button>
             </Form>
@@ -30,11 +81,11 @@ const SignupPage = () => {
             <Row className='py-3'>
                 <Col>
                     Have an account?
-                    <Link to='/login'>Login</Link>
+                    <Link to='/login'> Login</Link>
                 </Col>
             </Row>
         </FormContainer>
-    )
+    )}
 }
 
 export default SignupPage
