@@ -20,7 +20,19 @@ def signin(request):
         try:
             credentials = json.loads(request.body.decode('utf-8'))
             if validate(credentials['username'], credentials['password']):
-                response = HttpResponse()
+                author = json.loads(serializers.serialize(
+                    'json', Author.objects.filter(username=credentials['username'])
+                ))
+                curations = serializers.serialize(
+                    'json', Curation.objects.filter(
+                        author=Author.objects.get(username=credentials['username'])
+                        )
+                )
+                author[0]["curations"] = curations
+                response = HttpResponse(
+                    status=HTTPStatus.OK, content=json.dumps(author),
+                    content_type='application/json; charset=utf-8'
+                )
                 response.set_signed_cookie('uid', credentials['username'], max_age=MAX_AGE)
                 response.set_signed_cookie('loggedin', 'true', salt=credentials['username'], max_age=MAX_AGE)
             else:
@@ -65,7 +77,9 @@ def get_profile(request):
                     content='{"error": "Username does not exist."}',
                     content_type='application/json; charset=utf-8')
             else:
-                author = json.loads(serializers.serialize('json', Author.objects.filter(username=payload['username'])))
+                author = json.loads(serializers.serialize(
+                    'json', Author.objects.filter(username=payload['username'])
+                ))
                 curations = serializers.serialize('json', Curation.objects.filter(author=Author.objects.get(username=payload['username'])))
                 author[0]["curations"] = curations
                 response = HttpResponse(
@@ -84,7 +98,7 @@ def get_topic(request):
     else:
         try:
             payload = json.loads(request.body.decode('utf-8'))
-            curation = Curation.objects.filter(topic__icontains=payload['topic']) 
+            curation = Curation.objects.filter(topic__icontains=payload['topic'])
             response = HttpResponse(
                 status=HTTPStatus.OK,
                 content=serializers.serialize("json", curation),
@@ -118,7 +132,7 @@ def all_mentors(request):
         response = HttpResponseNotAllowed(['GET'])
     else:
         try:
-            mentors = Author.objects.all() 
+            mentors = Author.objects.all()
             response = HttpResponse(
                 status=HTTPStatus.OK,
                 content=serializers.serialize("json", mentors),
@@ -137,8 +151,11 @@ def add_curation(request):
         try:
             if validate_session(request):
                 curation = json.loads(request.body.decode('utf-8'))
-                Curation.objects.create(author=Author.objects.get(username=curation['username']), topic=curation['topic'],
-                data=curation['data'])
+                Curation.objects.create(
+                    author=Author.objects.get(username=curation['username']),
+                    topic=curation['topic'],
+                    data=curation['data']
+                )
                 response = HttpResponse(
                     status=HTTPStatus.CREATED
                 )
