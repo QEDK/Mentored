@@ -18,7 +18,7 @@ class LoginPage extends Component {
             password: '',
             // loading: false,
             // errors: {}
-            loggedin: cookies.get('loggedin')
+            loggedin: cookies.get('loggedin') || cookies.set('loggedin',"abcd", '/')
         };
     }
     handleSubmit = ( event) => {
@@ -45,6 +45,13 @@ class LoginPage extends Component {
 
                 cookies.set('loggedin', loggedin, { path: '/' });
                 this.setState({ loggedin });
+                if(document.cookie.split('loggedin=')[1].length > 5){
+                    console.log('signed in successfully')
+                    this.props.history.push('/profile');
+                    window.location.reload()
+                } else{
+                    this.props.history.push('/login');
+                }
             })
             .catch((err) => {
                 this.setState({
