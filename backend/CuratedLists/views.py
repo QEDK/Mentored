@@ -37,7 +37,7 @@ def signup(request):
     else:
         try:
             details = json.loads(request.body.decode('utf-8'))
-            if usernameExists(details):
+            if usernameExists(details['username']):
                 response = HttpResponseBadRequest(
                     content='{"error": "Username already exists."}',
                     content_type='application/json; charset=utf-8')
