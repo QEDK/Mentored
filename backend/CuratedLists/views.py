@@ -101,11 +101,11 @@ def all_curations(request):
         response = HttpResponseNotAllowed(['GET'])
     else:
         try:
-            # perform dbaction()
+            curations = Curation.objects.all()
             response = HttpResponse(
                 status=HTTPStatus.OK,
-                # content=serializers.serialize("json", curation),
-                # content_type='application/json; charset=utf-8'
+                content=serializers.serialize("json", curations),
+                content_type='application/json; charset=utf-8'
             )
         except Exception:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
@@ -118,11 +118,11 @@ def all_mentors(request):
         response = HttpResponseNotAllowed(['GET'])
     else:
         try:
-            # perform dbaction()
+            mentors = Author.objects.all() 
             response = HttpResponse(
                 status=HTTPStatus.OK,
-                # content=serializers.serialize("json", curation),
-                # content_type='application/json; charset=utf-8'
+                content=serializers.serialize("json", mentors),
+                content_type='application/json; charset=utf-8'
             )
         except Exception:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
@@ -137,11 +137,10 @@ def add_curation(request):
         try:
             if validate_session(request):
                 curation = json.loads(request.body.decode('utf-8'))
-                # perform dbaction()
+                Curation.objects.create(author=Author.objects.get(username=curation['username']), topic=curation['topic'],
+                data=curation['data'])
                 response = HttpResponse(
-                    status=HTTPStatus.OK,
-                    # content=serializers.serialize("json", curation),
-                    # content_type='application/json; charset=utf-8'
+                    status=HTTPStatus.CREATED
                 )
             else:
                 response = HttpResponse(status=HTTPStatus.FORBIDDEN)
