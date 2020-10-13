@@ -17,7 +17,7 @@ class LoginPage extends Component {
             username: '',
             password: '',
             loggedin: cookies.get('loggedin') || cookies.set('loggedin', "abcd", '/'),
-            uid: cookies.get('uid') || cookies.set('uid', "1234", '/')
+
         };
     }
     handleSubmit = (event) => {
@@ -27,21 +27,20 @@ class LoginPage extends Component {
             username: this.state.username,
             password: this.state.password,
             loggedin: this.state.loggedin,
-            uid: this.state.uid
+
         };
         axios
             .post('https://mentored-n3wkrveexq-uc.a.run.app/api/signin', userData)
-            .then((loggedin, uid) => {
+            .then((loggedin) => {
                 const { cookies } = this.props;
 
                 cookies.set('loggedin', loggedin, { path: '/' });
-                cookies.set('uid', uid, { path: '/' });
                 this.setState({
                     loggedin: this.state.loggedin,
-                    uid: this.state.uid
+
                 });
-                if (document.cookie.split('loggedin=')[1].length > 5 && document.cookie.split('uid=')[1].length > 5) {
-  
+                if (document.cookie.split('loggedin=')[1].length > 5 ) {
+
                     localStorage.setItem('username', this.state.username)
                     this.props.history.push('/profile');
                     window.location.reload()
