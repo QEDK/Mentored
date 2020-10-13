@@ -23,6 +23,7 @@ class CuratedList extends Component {
     }
     render() {
         const { list } = this.state;
+        console.log(list)
         return (
             <>
                 <Row>
