@@ -47,36 +47,36 @@ class ListPage extends Component {
             <>
                 <h2 className='text-center mt-5 mb-5 pl-5 pr-5'>{fields.topic}</h2>
                 <Accordion defaultActiveKey="0" style={{cursor: 'pointer'}} className='mt-5 mb-5 pl-5 pr-5'>
-                    <Card>
+                    {(books !== "") ? (<Card>
                         <Accordion.Toggle as={Card.Header} eventKey="0">
                             Books
                                 </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
                             <ListGroup>
-                                {books.map(book => <ListGroup.Item>{book}</ListGroup.Item>)}
+                                {books.map((book, i) => <ListGroup.Item key={i}>{book}</ListGroup.Item>)}
                             </ListGroup>
                         </Accordion.Collapse>
-                    </Card>
-                    <Card>
+                    </Card>) : null}
+                    {(videos !== "") ? (<Card>
                         <Accordion.Toggle as={Card.Header} eventKey="1">
                             Videos
                                 </Accordion.Toggle>
                         <Accordion.Collapse eventKey="1">
                             <ListGroup>
-                            {videos.map(video => <ListGroup.Item><a href={video} target="_blank" rel='noopener noreferrer'>{video}</a></ListGroup.Item>)}
+                            {videos.map((video,i) => <ListGroup.Item key={i}><a href={video} target="_blank" rel='noopener noreferrer'>{video}</a></ListGroup.Item>)}
                             </ListGroup>
                         </Accordion.Collapse>
-                    </Card>
-                    <Card>
+                    </Card>) : null}
+                    {(blogs !== "") ? (<Card>
                         <Accordion.Toggle as={Card.Header} eventKey="2">
                             Blogs
                                 </Accordion.Toggle>
                         <Accordion.Collapse eventKey="2">
                             <ListGroup>
-                            {blogs.map(blog => <ListGroup.Item><a href={blog} target="_blank" rel="noopener noreferrer">{blog}</a></ListGroup.Item>)}
+                            {blogs.map((blog,i)=> <ListGroup.Item key={i}><a href={blog} target="_blank" rel="noopener noreferrer">{blog}</a></ListGroup.Item>)}
                             </ListGroup>
                         </Accordion.Collapse>
-                    </Card>
+                    </Card>) : null}
                 </Accordion>
 
             </>
