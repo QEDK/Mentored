@@ -1,7 +1,7 @@
-from django.conf import settings
 from django.db import models
 from django.utils import timezone
 import uuid
+
 
 class Author(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -14,6 +14,7 @@ class Author(models.Model):
     def saveAuthor(self):
         self.created_date = timezone.now()
         self.save()
+
 
 class Curation(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
