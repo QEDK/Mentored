@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const TrackCard = ({ list }) => {
-    console.log('inside card list', list)
+    
     return (
         <Card className='my-3 p-3 rounded' key={list.pk}>
             <Card.Body>

@@ -18,14 +18,10 @@ class CuratedList extends Component {
                 this.setState({
                     list: list
                 })
-                console.log(list)
-            })
-            .catch(err => {
-                console.error(err)
+
             })
     }
     render() {
-        console.log('in render list : ', this.state.list)
         const { list } = this.state;
         return (
             <>

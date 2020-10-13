@@ -16,14 +16,13 @@ class LoginPage extends Component {
         this.state = {
             username: '',
             password: '',
-            // errors: {}
             loggedin: cookies.get('loggedin') || cookies.set('loggedin', "abcd", '/'),
             uid: cookies.get('uid') || cookies.set('uid', "1234", '/')
         };
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('form submit')
+
         const userData = {
             username: this.state.username,
             password: this.state.password,
@@ -42,9 +41,7 @@ class LoginPage extends Component {
                     uid: this.state.uid
                 });
                 if (document.cookie.split('loggedin=')[1].length > 5 && document.cookie.split('uid=')[1].length > 5) {
-                    console.log('signed in successfully')
-                    console.log('loggedin', loggedin)
-                    console.log('uid', uid)
+  
                     localStorage.setItem('username', this.state.username)
                     this.props.history.push('/profile');
                     window.location.reload()
@@ -64,7 +61,6 @@ class LoginPage extends Component {
         });
     };
     render() {
-        // const { errors } = this.state;
         return (
             <FormContainer>
                 <h2>Login</h2>
@@ -81,11 +77,6 @@ class LoginPage extends Component {
                             value={this.state.password}
                             onChange={this.handleChange}></Form.Control>
                     </Form.Group>
-                    {/* {errors.general && (
-                        <h6>
-                            {errors.general}
-                        </h6>
-                    )} */}
                     <Button type='submit' variant='primary'>Login</Button>
                 </Form>
 

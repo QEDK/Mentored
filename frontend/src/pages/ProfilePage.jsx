@@ -20,7 +20,7 @@ class ProfilePage extends Component {
         const send = {
             username: user
         }
-        console.log('username =', username)
+
         axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_profile', send)
             .then((res) => {
                 profile = res.data[0]
@@ -31,9 +31,6 @@ class ProfilePage extends Component {
                     fields: fields,
                     list: list
                 })
-                console.log('profile = ', profile)
-                console.log('fields = ', fields)
-                console.log('list on profile page= ', list)
             })
             .catch(err => {
                 console.error(err)
@@ -41,7 +38,7 @@ class ProfilePage extends Component {
     }
     render() {
         const { fields, list } = this.state;
-        console.log("in render", list)
+   
         return (
             <Row>
                 <Col md={3}>

@@ -18,7 +18,7 @@ class ProfileList extends Component {
         const send = {
             username: user
         }
-        console.log('username =', username)
+
         axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_profile', send)
             .then((res) => {
                 profile = res.data[0]
@@ -27,8 +27,6 @@ class ProfileList extends Component {
                     profile: profile,
                     curations: curations
                 })
-                console.log('profile = ', profile)
-                console.log('curations = ', curations)
             })
             .catch(err => {
                 console.error(err)
@@ -36,11 +34,7 @@ class ProfileList extends Component {
     }
     render() {
         const { curations } = this.state;
-        // const curationsNew = this.state.curations
-        // curationsNew.forEach(element => {
-        //     console.log("foreach element = ", element)
-        // });
-        console.log('in profile list component = ', curations);
+       
         return (
             <>
                 <Row>

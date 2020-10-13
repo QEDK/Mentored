@@ -14,7 +14,7 @@ class MakeList extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('form submit')
+
         const newCuration = {
             username: "tryingSignup2",
             topic: this.state.topic,
@@ -27,7 +27,7 @@ class MakeList extends Component {
         axios
             .post('https://mentored-n3wkrveexq-uc.a.run.app/api/add_curation', newCuration)
             .then((newCuration) => {
-                console.log(newCuration.config.data)
+            
                 this.props.history.push('/profile')
             })
             .catch((err) => {

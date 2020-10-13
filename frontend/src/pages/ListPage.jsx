@@ -35,13 +35,7 @@ class ListPage extends Component {
                     books: books,
                     pk: pk
                 })
-                console.log('list= ', list)
-                console.log('fields= ', fields)
-                console.log('data= ', data)
-                console.log('pk= ', pk)
-                console.log('book= ',books)
-                console.log('video= ',videos)
-                console.log('blog= ',blogs)
+
             })
             .catch(err => {
                 console.error(err)

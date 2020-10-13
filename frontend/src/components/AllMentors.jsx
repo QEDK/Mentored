@@ -16,14 +16,9 @@ class AllMentors extends Component {
                 this.setState({
                     profiles: profiles
                 })
-                console.log(profiles)
-            })
-            .catch(err => {
-                console.error(err)
             })
     }
     render() {
-        console.log('rendered mentors  : ', this.state.profiles)
         const { profiles } = this.state;
         return (
             <>

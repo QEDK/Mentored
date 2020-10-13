@@ -3,7 +3,6 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const ProfileListCard = ({ curations }) => {
-    console.log('inside card curations', curations)
     return (
         <Card className='my-3 p-3 rounded' key={curations.pk}>
             <Card.Body>

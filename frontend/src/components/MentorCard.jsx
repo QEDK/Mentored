@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 
 const MentorCard = ({profiles}) => {
-    console.log('inside card profiles', profiles)
+  
     return (
         <Card border='primary' className='my-3 p-3 rounded' style={{height: '80%'}}>
             <Card.Body>
@@ -12,7 +12,6 @@ const MentorCard = ({profiles}) => {
                         Works at - {profiles.fields.company}
                     </Card.Text>
                     <Card.Link href="#">Contact Mentor</Card.Link>
-                    {/* <Card.Link href="#">Discord</Card.Link> */}
             </Card.Body>
         </Card>
     )

@@ -12,12 +12,11 @@ class SignupPage extends Component {
             password: '',
             name: '',
             company: ''
-            // errors: {}
         };
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('form submit')
+
         const newUserData = {
             username: this.state.username,
             password: this.state.password,
@@ -27,7 +26,6 @@ class SignupPage extends Component {
         axios
             .post('https://mentored-n3wkrveexq-uc.a.run.app/api/signup', newUserData)
             .then((newUserData) => {
-                console.log(newUserData)
                 this.props.history.push('/login')
             })
             .catch((err) => {

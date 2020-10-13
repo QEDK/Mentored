@@ -6,11 +6,9 @@ import logo from '../assets/logo.png'
 const Header = ({cookies}) => {
     const [user, setUser] = useState(false)
     useEffect(() => {
-        // if (user === false) {
-        //     this.props.history.push('/login');
-        // }
+
         if (document.cookie.split('loggedin=')[1].length > 5 && document.cookie.split('uid=')[1].length > 5) {
-            console.log('header accessed')
+            
             setUser(true);
         }
     }, []);
