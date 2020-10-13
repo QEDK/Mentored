@@ -37,9 +37,10 @@ class ProfilePage extends Component {
             })
     }
     render() {
-        const { fields } = this.state;
+        const { user, fields } = this.state;
         return (
-            <Row>
+            <>
+            {user ? (<Row>
                 <Col md={3}>
                     <h2>User Profile</h2>
                     <Form>
@@ -65,7 +66,8 @@ class ProfilePage extends Component {
                     <ProfileList />
                     <Link to='/profile/makelist'><Button>Create New</Button></Link>
                 </Col>
-            </Row>
+            </Row>) : <h2 className='d-flex justify-content-center mt-5'>Please&nbsp;<Link to='/login'>Login</Link></h2>}
+            </>
         )
     }
 }

@@ -43,6 +43,7 @@ class MakeList extends Component {
     };
     render() {
         return (
+            <>
             <Container>
                 <h4>Add a new list</h4>
                 <Form noValidate onSubmit={this.handleSubmit}>
@@ -78,6 +79,7 @@ class MakeList extends Component {
                     <Button type='submit' variant='primary'>Make</Button>
                 </Form>
             </Container>
+            </>
         )
     }
 }

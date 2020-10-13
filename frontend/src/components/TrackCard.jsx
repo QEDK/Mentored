@@ -3,7 +3,6 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const TrackCard = ({ list }) => {
-    console.log(list)
     return (
         <Card className='my-3 p-3 rounded' style={{height: '80%'}}>
             <Card.Body>
