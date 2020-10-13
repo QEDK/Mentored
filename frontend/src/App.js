@@ -12,6 +12,7 @@ import SignupPage from './pages/SignupPage';
 import ProfilePage from './pages/ProfilePage';
 import { CookiesProvider } from "react-cookie";
 import MakeList from './pages/MakeList';
+import MentorPage from './pages/MentorPage'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/login' component={LoginPage} exact />
             <Route path='/signup' component={SignupPage} exact />
             <Route path='/profile' component={ProfilePage} exact />
+            <Route path='/mentor/:id' component={MentorPage} exact />
             <Route path='/profile/makelist' component={MakeList} exact />
           </Container>
         </main>
