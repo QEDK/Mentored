@@ -1,10 +1,10 @@
 import React from 'react'
 import { Accordion, Card, ListGroup } from 'react-bootstrap'
 
-const ListPage = () => {
+const ListPage = ({list}) => {
     return (
         <>
-            <h2 className='text-center mt-5 mb-5 pl-5 pr-5'>Title of track comes here</h2>
+            <h2 className='text-center mt-5 mb-5 pl-5 pr-5'>topic</h2>
             <Accordion className='mt-5 mb-5 pl-5 pr-5'>
                 <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">

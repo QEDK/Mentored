@@ -11,19 +11,19 @@ class CuratedList extends Component {
             list: []
         };
     }
-    componentDidMount(list){
+    componentDidMount(list) {
         // event.preventDefault()
         axios.get('https://mentored-n3wkrveexq-uc.a.run.app/api/all_curations', list)
-        .then((res) => {
-            list = res.data
-            this.setState({
-                list: list
+            .then((res) => {
+                list = res.data
+                this.setState({
+                    list: list
+                })
+                console.log(list)
             })
-            console.log(list)
-        })
-        .catch(err=> {
-            console.error(err)
-        })
+            .catch(err => {
+                console.error(err)
+            })
     }
     // Functional Component
     // const [list, setList] = useState({})
@@ -36,15 +36,15 @@ class CuratedList extends Component {
     //         console.error(err)
     //     })
     render() {
-        console.log('in render list : ',this.state.list)
-        const {list} = this.state;
+        console.log('in render list : ', this.state.list)
+        const { list } = this.state;
         return (
             <>
                 <Row>
                     {list.map(onelist => (
                         <Col sm={12} md={6} lg={4} xl={3}>
-                        <TrackCard list={onelist}/>
-                    </Col>
+                            <TrackCard list={onelist} />
+                        </Col>
                     ))}
                 </Row>
             </>

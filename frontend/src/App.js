@@ -22,8 +22,8 @@ function App() {
           <Container>
             <Route path='/' component={LandingPage} exact />
             <Route path='/curated' component={HomePage} exact />
-            {/* <Route path='/list/:id' component={ListPage} exact /> */}
-            <Route path='/list/1' component={ListPage} exact />
+            <Route path='/curated/:id' component={ListPage} exact />
+            {/* <Route path='/list/1' component={ListPage} exact /> */}
             <Route path='/mentors' component={MentorsPage} exact />
             <Route path='/login' component={LoginPage} exact />
             <Route path='/signup' component={SignupPage} exact />

@@ -1,15 +1,18 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-const TrackCard = ({list}) => {
+const TrackCard = ({ list }) => {
+    console.log('inside card list', list)
     return (
-        <Card className='my-3 p-3 rounded'>
+        <Card className='my-3 p-3 rounded' key={list.pk}>
             <Card.Body>
-                {/* <a href={`/list/${track.id}`}>*/}
-                <a href='/list/1'>
-                    <Card.Title as='h6'>{list.topic}</Card.Title>
-    <Card.Text className="mb-2 text-muted">Created by: {list.author}</Card.Text>
-                </a>
+                {/* <a href={`/list/${list.pk}`}> */}
+                <Link to={`/curated/${list.pk}`}>
+                    <Card.Title as='h6'>{list.fields.topic}</Card.Title>
+                    <Card.Text className="mb-2 text-muted">Created by: {list.fields.author}</Card.Text>
+                </Link>
+                {/* </a> */}
             </Card.Body>
         </Card>
     )
