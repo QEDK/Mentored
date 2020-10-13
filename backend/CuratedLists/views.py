@@ -1,5 +1,7 @@
 import json
-from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest
+from django.http import (
+    HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest
+)
 from django.contrib.auth.hashers import check_password, make_password
 from http import HTTPStatus
 from CuratedLists.models import Author
@@ -8,8 +10,10 @@ from django.core import serializers
 
 MAX_AGE = 30*24*60*60  # 30 days
 
+
 def index(request):
     return HttpResponse("Hello, world.")
+
 
 def signin(request):
     if request.method == 'OPTIONS':
@@ -34,12 +38,16 @@ def signin(request):
                     content_type='application/json; charset=utf-8'
                 )
                 response.set_signed_cookie('uid', credentials['username'], max_age=MAX_AGE)
-                response.set_signed_cookie('loggedin', 'true', salt=credentials['username'], max_age=MAX_AGE)
+                response.set_signed_cookie(
+                    'loggedin', 'true', salt=credentials['username'], max_age=MAX_AGE
+                )
             else:
                 response = HttpResponse(status=HTTPStatus.UNAUTHORIZED)
-        except:
-            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+        except Exception as e:
+            print(e)
+            response = HttpResponseBadRequest()
     return response
+
 
 def signup(request):
     if request.method == 'OPTIONS':
@@ -60,9 +68,11 @@ def signup(request):
                     name=details['name'],
                     company=details['company'])
                 response = HttpResponse(status=HTTPStatus.CREATED)
-        except:
-            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+        except Exception as e:
+            print(e)
+            response = HttpResponseBadRequest()
     return response
+
 
 def get_profile(request):
     if request.method == 'OPTIONS':
@@ -90,9 +100,11 @@ def get_profile(request):
                     status=HTTPStatus.OK, content=json.dumps(author),
                     content_type='application/json; charset=utf-8'
                 )
-        except Exception:
-            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+        except Exception as e:
+            print(e)
+            response = HttpResponseBadRequest()
     return response
+
 
 def get_topic(request):
     if request.method == 'OPTIONS':
@@ -108,9 +120,11 @@ def get_topic(request):
                 content=serializers.serialize("json", curation),
                 content_type='application/json; charset=utf-8'
             )
-        except Exception:
-            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+        except Exception as e:
+            print(e)
+            response = HttpResponseBadRequest()
     return response
+
 
 def all_curations(request):
     if request.method == 'OPTIONS':
@@ -125,9 +139,11 @@ def all_curations(request):
                 content=serializers.serialize("json", curations),
                 content_type='application/json; charset=utf-8'
             )
-        except Exception:
-            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+        except Exception as e:
+            print(e)
+            response = HttpResponseBadRequest()
     return response
+
 
 def all_mentors(request):
     if request.method == 'OPTIONS':
@@ -142,9 +158,11 @@ def all_mentors(request):
                 content=serializers.serialize("json", mentors),
                 content_type='application/json; charset=utf-8'
             )
-        except Exception:
-            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+        except Exception as e:
+            print(e)
+            response = HttpResponseBadRequest()
     return response
+
 
 def add_curation(request):
     if request.method == 'OPTIONS':
@@ -160,27 +178,29 @@ def add_curation(request):
                     topic=curation['topic'],
                     data=curation['data']
                 )
-                response = HttpResponse(
-                    status=HTTPStatus.CREATED
-                )
+                response = HttpResponse(status=HTTPStatus.CREATED)
             else:
                 response = HttpResponse(status=HTTPStatus.FORBIDDEN)
-        except Exception:
-            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+        except Exception as e:
+            print(e)
+            response = HttpResponseBadRequest()
     return response
+
 
 def validate_session(request):
     try:
         uid = request.get_signed_cookie('uid', max_age=MAX_AGE)
         return request.get_signed_cookie('loggedin', salt=uid, max_age=MAX_AGE) == 'true'
-    except:
-        return True
+    except Exception:
+        return False
+
 
 def validate(uid, password):
     if usernameExists(uid) and check_password(password, Author.objects.get(username=uid).password):
         return True
     else:
         return False
+
 
 def usernameExists(uid):
     return Author.objects.filter(username=uid).exists()
