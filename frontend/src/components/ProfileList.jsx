@@ -9,11 +9,12 @@ class ProfileList extends Component {
         this.state = {
             profile: {},
             username: '',
-            curations: []
+            curations: [],
+            fields: {}
         };
     }
 
-    componentDidMount(username, profile, curations) {
+    componentDidMount(username, profile, curations, fields) {
         const user = localStorage.getItem('username')
         const send = {
             username: user
@@ -22,10 +23,12 @@ class ProfileList extends Component {
         axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_profile', send)
             .then((res) => {
                 profile = res.data[0]
+                fields = profile.fields
                 curations = profile.curations
                 this.setState({
                     profile: profile,
-                    curations: curations
+                    curations: curations,
+                    fields: fields
                 })
             })
             .catch(err => {
@@ -33,14 +36,14 @@ class ProfileList extends Component {
             })
     }
     render() {
-        const { curations } = this.state;
-       
+        const { curations, fields } = this.state;
+
         return (
             <>
                 <Row>
                     {curations.map(curation => (
-                        <Col sm={12} md={6} lg={4} xl={3}>
-                            <ProfileListCard curations={curation} />
+                        <Col sm={12} md={6} lg={6} key={curation.pk}>
+                            <ProfileListCard curations={curation} fields={fields} />
                         </Col>
                     ))}
                 </Row>

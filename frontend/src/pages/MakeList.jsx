@@ -16,7 +16,7 @@ class MakeList extends Component {
         event.preventDefault();
 
         const newCuration = {
-            username: "tryingSignup2",
+            username: localStorage.getItem("username"),
             topic: this.state.topic,
             data: {
                 videos: this.state.videos,
@@ -27,7 +27,7 @@ class MakeList extends Component {
         axios
             .post('https://mentored-n3wkrveexq-uc.a.run.app/api/add_curation', newCuration)
             .then((newCuration) => {
-            
+
                 this.props.history.push('/profile')
             })
             .catch((err) => {

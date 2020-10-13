@@ -60,7 +60,7 @@ class ProfilePage extends Component {
 
                     </Form>
                 </Col>
-                <Col className='profilecur pl-5' md={9}>
+                <Col className='profilecur' md={9}>
                     <h2>Your Curated Lists</h2>
                     <ProfileList />
                     <Link to='/profile/makelist'><Button>Create New</Button></Link>

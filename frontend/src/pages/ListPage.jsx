@@ -46,7 +46,7 @@ class ListPage extends Component {
         return (
             <>
                 <h2 className='text-center mt-5 mb-5 pl-5 pr-5'>{fields.topic}</h2>
-                <Accordion className='mt-5 mb-5 pl-5 pr-5'>
+                <Accordion defaultActiveKey="0" style={{cursor: 'pointer'}} className='mt-5 mb-5 pl-5 pr-5'>
                     <Card>
                         <Accordion.Toggle as={Card.Header} eventKey="0">
                             Books

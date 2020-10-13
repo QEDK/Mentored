@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const TrackCard = ({ list }) => {
     console.log(list)
     return (
-        <Card className='my-3 p-3 rounded' key={list.pk}>
+        <Card className='my-3 p-3 rounded' style={{height: '80%'}}>
             <Card.Body>
                 <Link to={`/curated/${list.pk}`}>
                     <Card.Title as='h6'>{list.fields.topic}</Card.Title>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 
 const MentorCard = ({profiles}) => {
-  
+  console.log(profiles)
     return (
         <Card border='primary' className='my-3 p-3 rounded' style={{height: '80%'}}>
             <Card.Body>

@@ -23,13 +23,12 @@ class CuratedList extends Component {
     }
     render() {
         const { list } = this.state;
-        console.log(list)
         return (
             <>
                 <Row>
                     {list.map(onelist => (
                         <Col sm={12} md={6} lg={4} xl={3}>
-                            <TrackCard list={onelist} />
+                            <TrackCard list={onelist} key={onelist.pk}/>
                         </Col>
                     ))}
                 </Row>
