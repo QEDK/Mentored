@@ -9,7 +9,7 @@ class ProfileList extends Component {
         this.state = {
             profile: {},
             username: '',
-            curations: {}
+            curations: []
         };
     }
 
@@ -36,15 +36,19 @@ class ProfileList extends Component {
     }
     render() {
         const { curations } = this.state;
+        // const curationsNew = this.state.curations
+        // curationsNew.forEach(element => {
+        //     console.log("foreach element = ", element)
+        // });
         console.log('in profile list component = ', curations);
         return (
             <>
                 <Row>
-                    {/* {curations.map(curation => (
+                    {curations.map(curation => (
                         <Col sm={12} md={6} lg={4} xl={3}>
                             <ProfileListCard curations={curation} />
                         </Col>
-                    ))} */}
+                    ))}
                 </Row>
             </>
         )

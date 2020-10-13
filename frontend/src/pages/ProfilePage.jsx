@@ -33,7 +33,7 @@ class ProfilePage extends Component {
                 })
                 console.log('profile = ', profile)
                 console.log('fields = ', fields)
-                console.log('list = ', list)
+                console.log('list on profile page= ', list)
             })
             .catch(err => {
                 console.error(err)
