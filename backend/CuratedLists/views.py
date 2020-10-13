@@ -114,10 +114,18 @@ def get_topic(request):
     else:
         try:
             payload = json.loads(request.body.decode('utf-8'))
-            curation = Curation.objects.filter(topic__icontains=payload['topic'])
+            curations = json.loads(serializers.serialize(
+                'json', Curation.objects.filter(topic__icontains=payload['topic'])
+            ))
+            for curation in curations:
+                curation['fields']['profile'] = json.loads(serializers.serialize(
+                    'json', Author.objects.filter(
+                        id=curation['fields']['author']
+                    )
+                ))[0]["fields"]
             response = HttpResponse(
                 status=HTTPStatus.OK,
-                content=serializers.serialize("json", curation),
+                content=json.dumps(curations),
                 content_type='application/json; charset=utf-8'
             )
         except Exception as e:
@@ -139,7 +147,7 @@ def all_curations(request):
                     'json', Author.objects.filter(
                         id=curation['fields']['author'])
                     )
-                )[0]
+                )[0]["fields"]
             response = HttpResponse(
                 status=HTTPStatus.OK,
                 content=json.dumps(curations),
