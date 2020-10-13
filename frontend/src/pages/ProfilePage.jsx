@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const ProfilePage = () => {
      const [profile, setProfile] = useState({})
-    axios.get('https://mentored-n3wkrveexq-uc.a.run.app/api/get_topic', profile)
+    axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_profile', profile)
         .then(res => {
             setProfile(res)
             console.log(res)
@@ -20,11 +20,11 @@ const ProfilePage = () => {
                 <Form>
                     <Form.Group controlId='name'>
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type='name' placeholder='Enter Full Name'></Form.Control>
+                        <Form.Control disabled type='name' placeholder='Preet'></Form.Control>
                     </Form.Group>
                     <Form.Group controlId='username'>
                         <Form.Label>Username</Form.Label>
-                        <Form.Control name='username' type='text' placeholder='Enter Username'>
+                        <Form.Control disabled name='username' type='text' placeholder='tryingSignup2'>
                         </Form.Control>
                     </Form.Group>
                     {/* <Form.Group controlId='password'>
@@ -33,7 +33,7 @@ const ProfilePage = () => {
                     </Form.Group> */}
                     <Form.Group controlId='company'>
                         <Form.Label>Company</Form.Label>
-                        <Form.Control type='text' name='company' placeholder='Enter Company Name'></Form.Control>
+                        <Form.Control disabled type='text' name='company' placeholder='Mentored'></Form.Control>
                     </Form.Group>
                     {/* <Button type='submit' variant='primary'>Update</Button> */}
                 </Form>

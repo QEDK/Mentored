@@ -1,36 +1,55 @@
-import React, { useState } from 'react'
+import React, { Component, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import TrackCard from './TrackCard'
 import axios from 'axios'
 
-const CuratedList = () => {
+class CuratedList extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            list: []
+        };
+    }
+    componentDidMount(list){
+        // event.preventDefault()
+        axios.get('https://mentored-n3wkrveexq-uc.a.run.app/api/all_curations', list)
+        .then((res) => {
+            list = res.data
+            this.setState({
+                list: list
+            })
+            console.log(list)
+        })
+        .catch(err=> {
+            console.error(err)
+        })
+    }
+    // Functional Component
     // const [list, setList] = useState({})
-    // axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_topic', list)
-    //     .then(res => {
+    // axios.get('https://mentored-n3wkrveexq-uc.a.run.app/api/all_curations', list)
+    //     .then((res) => {
     //         setList(res)
-    //         console.log(res)
+    //         console.log(res.data)
     //     })
     //     .catch(err=> {
     //         console.error(err)
     //     })
-    return (
-        <>
-            <Row>
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <TrackCard />
-                </Col>
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <TrackCard />
-                </Col>
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <TrackCard />
-                </Col>
-                <Col sm={12} md={6} lg={4} xl={3}>
-                    <TrackCard />
-                </Col>
-            </Row>
-        </>
-    )
+    render() {
+        console.log('in render list : ',this.state.list)
+        const {list} = this.state;
+        return (
+            <>
+                <Row>
+                    {list.map(onelist => (
+                        <Col sm={12} md={6} lg={4} xl={3}>
+                        <TrackCard list={onelist}/>
+                    </Col>
+                    ))}
+                </Row>
+            </>
+        )
+    }
 }
 
 export default CuratedList
