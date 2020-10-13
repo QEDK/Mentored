@@ -3,13 +3,16 @@ FROM python:3.7-buster
 
 ENV PYTHONUNBUFFERED=1
 
-# Install dependencies
-RUN pip install -r backend/requirements.txt
-
 # Create a working directory
 WORKDIR /project
 
-# Add backend to working directory
+# Add requirements.txt
+COPY ./backend/requirements.txt /project
+
+# Install dependencies
+RUN pip install -r requirements.txt
+
+# Copy rest of the files
 COPY ./backend /project
 
 # Make the container listen on port 8000
