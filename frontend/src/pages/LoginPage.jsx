@@ -16,37 +16,35 @@ class LoginPage extends Component {
         this.state = {
             username: '',
             password: '',
-            // loading: false,
             // errors: {}
-            loggedin: cookies.get('loggedin') || cookies.set('loggedin', "abcd", '/')
+            loggedin: cookies.get('loggedin') || cookies.set('loggedin', "abcd", '/'),
+            uid: cookies.get('uid') || cookies.set('uid', "1234", '/')
         };
     }
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('form submit')
-        // this.setState({
-        //     loading: true
-        // });
         const userData = {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            loggedin: this.state.loggedin,
+            uid: this.state.uid
         };
         axios
             .post('https://mentored-n3wkrveexq-uc.a.run.app/api/signin', userData)
-            .then((loggedin) => {
-                // console.log(res);
-                // this.setState({
-                //     loading: false
-                // });
-                // if(document.cookie.split('; ')[1] === "CookieConsent=true"){
-                // this.props.history.push('/');
-                // }
+            .then((loggedin, uid) => {
                 const { cookies } = this.props;
 
                 cookies.set('loggedin', loggedin, { path: '/' });
-                this.setState({ loggedin });
-                if (document.cookie.split('loggedin=')[1].length > 5) {
+                cookies.set('uid', uid, { path: '/' });
+                this.setState({
+                    loggedin: this.state.loggedin,
+                    uid: this.state.uid
+                });
+                if (document.cookie.split('loggedin=')[1].length > 5 && document.cookie.split('uid=')[1].length > 5) {
                     console.log('signed in successfully')
+                    console.log('loggedin', loggedin)
+                    console.log('uid', uid)
                     localStorage.setItem('username', this.state.username)
                     this.props.history.push('/profile');
                     window.location.reload()
@@ -57,7 +55,6 @@ class LoginPage extends Component {
             .catch((err) => {
                 this.setState({
                     errors: err.response,
-                    // loading: false
                 });
             });
     };
@@ -68,7 +65,6 @@ class LoginPage extends Component {
     };
     render() {
         // const { errors } = this.state;
-        // const { loading } = this.state;
         return (
             <FormContainer>
                 <h2>Login</h2>

@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import TrackCard from './TrackCard'
 import axios from 'axios'
@@ -24,16 +24,6 @@ class CuratedList extends Component {
                 console.error(err)
             })
     }
-    // Functional Component
-    // const [list, setList] = useState({})
-    // axios.get('https://mentored-n3wkrveexq-uc.a.run.app/api/all_curations', list)
-    //     .then((res) => {
-    //         setList(res)
-    //         console.log(res.data)
-    //     })
-    //     .catch(err=> {
-    //         console.error(err)
-    //     })
     render() {
         console.log('in render list : ', this.state.list)
         const { list } = this.state;

@@ -39,7 +39,7 @@ class ProfilePage extends Component {
             })
     }
     render() {
-        const { profile, fields, curations } = this.state;
+        const { fields, curations } = this.state;
         return (
             <Row>
                         <Col md={3}>
