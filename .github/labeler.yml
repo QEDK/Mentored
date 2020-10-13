@@ -1,0 +1,8 @@
+backend:
+  - backend/**
+
+frontend:
+  - frontend/**
+
+documentation:
+  - README.md
