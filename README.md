@@ -18,11 +18,11 @@ This project was built by [Yash Khare](https://github.com/yashk2000), [Preet Sha
 Mentored has a ReactJS frontend ⚛️ hosted with Netlify, and a Django backend 🐍 backed by PostgreSQL hosted on Google Cloud Platform. The UI is based on React Bootstrap, while the Cloud Run backend uses `psycopg2` for communicating with Cloud SQL. 💽
 
 ## 👨‍💻 For contributors
-- To get a deeper understanding of the project please check out our project's [wiki](https://github.com/QEDK/Mentored/wiki).
-- Before contributing do go through the [Code of Conduct](https://github.com/QEDK/Mentored/blob/master/CODE_OF_CONDUCT.md) and the [Contributor Guidelines](https://github.com/QEDK/Mentored/blob/master/CONTRIBUTING.md).
-- If you find any bugs in the application, or a feature you think would be nice to have, please open an [issue](https://github.com/QEDK/Mentored/issues/new/choose).
-- Please follow the [style guidelines](https://github.com/QEDK/Mentored/wiki/Style-guidelines) when making contributions. We have automatic labelers and linters set up using GitHub Actions to check all pull requests for syntax and correct labelling. Instructions on running the linter locally can be found below.
-- Continue reading the rest of the README to get the build instructions for both the frontend and the backend.
+- To get a deeper understanding of the project please check out our project's [wiki](https://github.com/QEDK/Mentored/wiki). 📖
+- Before contributing do go through the [Code of Conduct](https://github.com/QEDK/Mentored/blob/master/CODE_OF_CONDUCT.md) and the [Contributor Guidelines](https://github.com/QEDK/Mentored/blob/master/CONTRIBUTING.md). 🔧
+- If you find any bugs in the application, or a feature you think would be nice to have, please open an [issue](https://github.com/QEDK/Mentored/issues/new/choose). 🐞
+- Please follow the [style guidelines](https://github.com/QEDK/Mentored/wiki/Style-guidelines) when making contributions. We have automatic labelers and linters set up using GitHub Actions to check all pull requests for syntax and correct labelling. Instructions on running the linter locally can be found below. 🖌️
+- Continue reading the rest of the README to get the build instructions for both the frontend and the backend. ⛏️
 
 ## 🛠️ Installation
 The project can be setup by following these instructions, note that you must have `npm` and `pip` installed before proceeding further. You should ideally also be working in a virtual environment, such as Python's `venv` or the `virtualenv` module.
@@ -39,7 +39,7 @@ DB_USERNAME=<db_username>
 DB_PASSWORD=<db_password>
 ```
 
-### 🧩 Building dependencies
+### 🧱 Building dependencies
 ```bash
 $ git clone git@github.com:QEDK/Mentored.git
 $ cd Mentored/backend
@@ -58,7 +58,8 @@ $ python3 manage.py runserver
 ```
 Finally, navigate to http://localhost:8000 and you should see a `Hello, world!` to signify that your app is now up and running! ⚡
 
-We also provide a `Dockerfile` for easy containerization and deployment, all you need to do is:
+##### 🐳 Building with Docker
+We also provide a `Dockerfile` for easy containerization and deployment of the backend, all you need to do is:
 ```bash
 $ docker build -t 'app:Dockerfile' .
 $ docker run app:Dockerfile
