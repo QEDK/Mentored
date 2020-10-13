@@ -28,7 +28,7 @@ class MakeList extends Component {
             .post('https://mentored-n3wkrveexq-uc.a.run.app/api/add_curation', newCuration)
             .then((newCuration) => {
                 console.log(newCuration.config.data)
-                this.props.history.push('/proile')
+                this.props.history.push('/profile')
             })
             .catch((err) => {
                 this.setState({

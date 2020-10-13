@@ -9,36 +9,46 @@ class ListPage extends Component {
             list: [],
             fields: {},
             data: {},
+            books: [],
+            videos: [],
+            blogs: [],
             pk: 0
         };
     }
-    componentDidMount(list, fields, data, pk) {
+    componentDidMount(list, fields, data, blogs, videos, books, pk) {
         axios.get('https://mentored-n3wkrveexq-uc.a.run.app/api/all_curations', list)
             .then((res) => {
                 const i = window.location.pathname.split('/curated/')[1]
                 list = res.data[i - 1]
                 fields = list.fields
                 data = fields.data
+                books = data.books.split(',')
+                blogs = data.blogs.split(',')
+                videos = data.videos.split(',')
                 pk = i
                 this.setState({
                     list: list,
                     fields: fields,
                     data: data,
+                    blogs: blogs,
+                    videos: videos,
+                    books: books,
                     pk: pk
                 })
                 console.log('list= ', list)
                 console.log('fields= ', fields)
                 console.log('data= ', data)
                 console.log('pk= ', pk)
+                console.log('book= ',books)
+                console.log('video= ',videos)
+                console.log('blog= ',blogs)
             })
             .catch(err => {
                 console.error(err)
             })
     }
     render() {
-        const { fields, data, pk } = this.state
-        const book = data.books
-        console.log('book= ',book)
+        const { fields, books, videos, blogs, pk } = this.state
         return (
             <>
                 <h2 className='text-center mt-5 mb-5 pl-5 pr-5'>{fields.topic}</h2>
@@ -49,7 +59,7 @@ class ListPage extends Component {
                                 </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
                             <ListGroup>
-                                {/* {data.books.map(book => <ListGroup.Item>{book}</ListGroup.Item>)} */}
+                                {books.map(book => <ListGroup.Item>{book}</ListGroup.Item>)}
                             </ListGroup>
                         </Accordion.Collapse>
                     </Card>
@@ -59,11 +69,7 @@ class ListPage extends Component {
                                 </Accordion.Toggle>
                         <Accordion.Collapse eventKey="1">
                             <ListGroup>
-                                <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                                <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                                <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                                <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                                <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                            {videos.map(video => <ListGroup.Item><a href={video} target="_blank">{video}</a></ListGroup.Item>)}
                             </ListGroup>
                         </Accordion.Collapse>
                     </Card>
@@ -73,11 +79,7 @@ class ListPage extends Component {
                                 </Accordion.Toggle>
                         <Accordion.Collapse eventKey="2">
                             <ListGroup>
-                                <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                                <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                                <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                                <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                                <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                            {blogs.map(blog => <ListGroup.Item><a href={blog} target="_blank">{blog}</a></ListGroup.Item>)}
                             </ListGroup>
                         </Accordion.Collapse>
                     </Card>
