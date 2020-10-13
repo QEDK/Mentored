@@ -133,10 +133,16 @@ def all_curations(request):
         response = HttpResponseNotAllowed(['GET'])
     else:
         try:
-            curations = Curation.objects.all()
+            curations = json.loads(serializers.serialize('json', Curation.objects.all()))
+            for curation in curations:
+                curation['fields']['profile'] = json.loads(serializers.serialize(
+                    'json', Author.objects.filter(
+                        id=curation['fields']['author'])
+                    )
+                )[0]
             response = HttpResponse(
                 status=HTTPStatus.OK,
-                content=serializers.serialize("json", curations),
+                content=json.dumps(curations),
                 content_type='application/json; charset=utf-8'
             )
         except Exception as e:
