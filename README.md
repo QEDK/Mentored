@@ -24,7 +24,7 @@ Mentored has a ReactJS frontend ⚛️ hosted with Netlify, and a Django backend
 - Continue reading the rest of the README to get the build instructions for both the frontend and the backend. 
 
 ## 🛠️ Installation
-The backend can be setup by following these instructions, note that you must have `npm` and `pip` installed before proceeding further. You should ideally also be working in a virtual environment, such as Python's `venv` or the `virtualenv` module.
+The project can be setup by following these instructions, note that you must have `npm` and `pip` installed before proceeding further. You should ideally also be working in a virtual environment, such as Python's `venv` or the `virtualenv` module.
 
 ### 🧰 Configuration
 For the default server to work normally, you must have a PostgreSQL instance running on your `localhost` (`127.0.0.1`) on port `5432`. Alternatively, if you're working on Google Cloud Platform with a Cloud SQL connection, you can set `GAE_INSTANCE=1` environment variable to use that connection instead and set `DB_HOST` to the connection instance name. ☁️
