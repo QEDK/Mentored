@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
 
 const ProfilePage = () => {
-     const [profile, setProfile] = useState({})
+    const [profile, setProfile] = useState({})
     axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_profile', profile)
         .then(res => {
             setProfile(res)

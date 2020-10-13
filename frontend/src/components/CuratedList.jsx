@@ -12,7 +12,6 @@ class CuratedList extends Component {
         };
     }
     componentDidMount(list) {
-        // event.preventDefault()
         axios.get('https://mentored-n3wkrveexq-uc.a.run.app/api/all_curations', list)
             .then((res) => {
                 list = res.data
