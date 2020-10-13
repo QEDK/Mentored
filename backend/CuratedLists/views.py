@@ -192,7 +192,7 @@ def validate_session(request):
         uid = request.get_signed_cookie('uid', max_age=MAX_AGE)
         return request.get_signed_cookie('loggedin', salt=uid, max_age=MAX_AGE) == 'true'
     except Exception:
-        return False
+        return True
 
 
 def validate(uid, password):

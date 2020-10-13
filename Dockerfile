@@ -3,16 +3,16 @@ FROM python:3.7-buster
 
 ENV PYTHONUNBUFFERED=1
 
+# Install dependencies
+RUN pip install -r backend/requirements.txt
+
 # Create a working directory
 WORKDIR /project
 
 # Add backend to working directory
-ADD ./backend /project
+COPY ./backend /project
 
-# Install dependencies
-RUN pip install -r requirements.txt
-
-# Make the container listen on HTTP
+# Make the container listen on port 8000
 EXPOSE 8000
 
 # Run Django server on all interfaces, port 8000
