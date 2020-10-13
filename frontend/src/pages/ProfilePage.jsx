@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { Form, Button, Row, Col, ListGroup } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
 import ProfileList from '../components/ProfileList';
 
@@ -37,8 +37,7 @@ class ProfilePage extends Component {
             })
     }
     render() {
-        const { fields, list } = this.state;
-   
+        const { fields } = this.state;
         return (
             <Row>
                 <Col md={3}>

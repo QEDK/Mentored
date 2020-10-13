@@ -42,7 +42,7 @@ class ListPage extends Component {
             })
     }
     render() {
-        const { fields, books, videos, blogs, pk } = this.state
+        const { fields, books, videos, blogs } = this.state
         return (
             <>
                 <h2 className='text-center mt-5 mb-5 pl-5 pr-5'>{fields.topic}</h2>
@@ -63,7 +63,7 @@ class ListPage extends Component {
                                 </Accordion.Toggle>
                         <Accordion.Collapse eventKey="1">
                             <ListGroup>
-                            {videos.map(video => <ListGroup.Item><a href={video} target="_blank">{video}</a></ListGroup.Item>)}
+                            {videos.map(video => <ListGroup.Item><a href={video} target="_blank" rel='noopener noreferrer'>{video}</a></ListGroup.Item>)}
                             </ListGroup>
                         </Accordion.Collapse>
                     </Card>
@@ -73,7 +73,7 @@ class ListPage extends Component {
                                 </Accordion.Toggle>
                         <Accordion.Collapse eventKey="2">
                             <ListGroup>
-                            {blogs.map(blog => <ListGroup.Item><a href={blog} target="_blank">{blog}</a></ListGroup.Item>)}
+                            {blogs.map(blog => <ListGroup.Item><a href={blog} target="_blank" rel="noopener noreferrer">{blog}</a></ListGroup.Item>)}
                             </ListGroup>
                         </Accordion.Collapse>
                     </Card>
