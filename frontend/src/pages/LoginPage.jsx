@@ -47,6 +47,7 @@ class LoginPage extends Component {
                 this.setState({ loggedin });
                 if (document.cookie.split('loggedin=')[1].length > 5) {
                     console.log('signed in successfully')
+                    localStorage.setItem('username', this.state.username)
                     this.props.history.push('/profile');
                     window.location.reload()
                 } else {

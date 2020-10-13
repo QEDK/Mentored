@@ -1,18 +1,47 @@
-import React, {useState} from 'react'
+import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
 
-const ProfilePage = () => {
-    const [profile, setProfile] = useState({})
-    axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_profile', profile)
-        .then(res => {
-            setProfile(res)
-            console.log(res)
-        })
-        .catch(err=> {
-            console.error(err)
-        })
+class ProfilePage extends Component {
+    constructor() {
+        super();
+        this.state = {
+            profile: '',
+            username: ''
+        };
+    }
+
+    componentDidMount(username, profile) {
+        const user = localStorage.getItem('username')
+        const send = {
+            username: user
+        }
+        console.log('username =', username)
+        axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_profile', send)
+            .then((res) => {
+                profile = res.data
+                this.setState({
+                    profile: profile
+                })
+                console.log('profile = ', profile)
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+
+    // axios.post('https://mentored-n3wkrveexq-uc.a.run.app/api/get_profile', profile)
+    //     .then(res => {
+    //         setProfile(res)
+    //         console.log(res)
+    //     })
+    //     .catch(err=> {
+    //         console.error(err)
+    //     })
+    render(){
+        // console.log('rendered mentor profile : ', this.state.profile)
+        const { profile } = this.state;
     return (
         <Row>
             <Col md={3}>
@@ -43,7 +72,7 @@ const ProfilePage = () => {
                 <Link to='/profile/makelist'><Button>Create New</Button></Link>
             </Col>
         </Row>
-    )
+    )}
 }
 
 export default ProfilePage
