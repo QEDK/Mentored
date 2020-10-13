@@ -7,12 +7,10 @@ const TrackCard = ({ list }) => {
     return (
         <Card className='my-3 p-3 rounded' key={list.pk}>
             <Card.Body>
-                {/* <a href={`/list/${list.pk}`}> */}
                 <Link to={`/curated/${list.pk}`}>
                     <Card.Title as='h6'>{list.fields.topic}</Card.Title>
                     <Card.Text className="mb-2 text-muted">Created by: {list.fields.author}</Card.Text>
                 </Link>
-                {/* </a> */}
             </Card.Body>
         </Card>
     )
