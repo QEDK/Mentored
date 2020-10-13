@@ -1,4 +1,4 @@
-![Mentored](https://socialify.git.ci/QEDK/Mentored/png?description=1&descriptionEditable=Real%20learning%20from%20real%20people.&font=Raleway&issues=1&language=1&owner=0&pattern=Floating%20Cogs&pulls=1&theme=Light)
+![Mentored](https://socialify.git.ci/QEDK/Mentored/png?description=1&font=Bitter&forks=0&issues=1&logo=https%3A%2F%2Fmedia.discordapp.net%2Fattachments%2F763734957306150933%2F765532665629638687%2Flogo-nobg.png&owner=0&pattern=Floating%20Cogs&pulls=1&theme=Light)
 ## 🙋 What is Mentored?
 Mentored intends to be a single, unified platform for people new to the technology and software development to find curated, high-quality resources for their topics of interest from industry experts and real software developers. 👨‍💻
 
@@ -18,10 +18,11 @@ This project was built by [Yash Khare](https://github.com/yashk2000), [Preet Sha
 Mentored has a ReactJS frontend ⚛️ hosted with Netlify, and a Django backend 🐍 backed by PostgreSQL hosted on Google Cloud Platform. The UI is based on React Bootstrap, while the Cloud Run backend uses `psycopg2` for communicating with Cloud SQL. 💽
 
 ## 👨‍💻 For contributors
-- To get a deeper understanding of the project please check out our project's [Wiki Page](https://github.com/QEDK/Mentored/wiki).
-- Before contributing do go through the [Code of Conduct](https://github.com/QEDK/Mentored/blob/master/CODE_OF_CONDUCT.md) and the [Contributors Guidelines](https://github.com/QEDK/Mentored/blob/master/CONTRIBUTING.md).
-- If you find any bug in the application, or a feature you think would be nice to have, please open an [issue](https://github.com/QEDK/Mentored/issues/new/choose).
-- Continue reading the rest of the README to get the build instructions for both the frontend and the backend. 
+- To get a deeper understanding of the project please check out our project's [wiki](https://github.com/QEDK/Mentored/wiki).
+- Before contributing do go through the [Code of Conduct](https://github.com/QEDK/Mentored/blob/master/CODE_OF_CONDUCT.md) and the [Contributor Guidelines](https://github.com/QEDK/Mentored/blob/master/CONTRIBUTING.md).
+- If you find any bugs in the application, or a feature you think would be nice to have, please open an [issue](https://github.com/QEDK/Mentored/issues/new/choose).
+- Please follow the [style guidelines](https://github.com/QEDK/Mentored/wiki/Style-guidelines) when making contributions. We have automatic labelers and linters set up using GitHub Actions to check all pull requests for syntax and correct labelling. Instructions on running the linter locally can be found below.
+- Continue reading the rest of the README to get the build instructions for both the frontend and the backend.
 
 ## 🛠️ Installation
 The project can be setup by following these instructions, note that you must have `npm` and `pip` installed before proceeding further. You should ideally also be working in a virtual environment, such as Python's `venv` or the `virtualenv` module.
@@ -73,6 +74,8 @@ $ npm start
 ```
 And the server should be up and running on http://localhost:3000! 🚀
 
+### 🧹 Linting
+All Python scripts are linted using [flake8](https://flake8.pycqa.org). To lint your files, simply install and run the `flake8` command in the project root and it should pick up the configuration automatically. GitHub Actions will automatically check your PR against `flake8` once submitted and provide helpful annotations in case of logical or stylistic errors. ℹ️
 
 ## 📜 License
 This project is released under a free and open-source software license, Apache License 2.0 or later ([LICENSE](LICENSE) or https://www.apache.org/licenses/LICENSE-2.0). The documentation is also released under a free documentation license, namely the [GFDL v1.3](https://www.gnu.org/licenses/fdl-1.3.en.html) license or later.
