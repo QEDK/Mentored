@@ -29,7 +29,8 @@ class ProfilePage extends Component {
                 this.setState({
                     profile: profile,
                     fields: fields,
-                    list: list
+                    list: list,
+                    username: user
                 })
             })
             .catch(err => {
@@ -37,10 +38,10 @@ class ProfilePage extends Component {
             })
     }
     render() {
-        const { user, fields } = this.state;
+        const { username, fields } = this.state;
         return (
             <>
-            {user ? (<Row>
+            {username ? (<Row>
                 <Col md={3}>
                     <h2>User Profile</h2>
                     <Form>
