@@ -1,13 +1,61 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+main {
+    min-height: 85vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.landspan{
+    color: #f8c006;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.landspan:before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 4px;
+    top: 5;
+    left: 0;
+    background-color: #f8c006;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.landspan:hover:before{
+    text-decoration: underline;
+    cursor: pointer;
+    visibility: visible;
+    width: 80%;
+}
+
+.landimg{
+    width: 60vw;
+    text-align: left;
+}
+
+.profilecur{
+    padding-left: 30px;
+}
+
+@media screen and (min-width:320px) and (max-width: 480px){
+    .landspan{
+        font-size: 35px;
+    }
+
+    h2{
+        font-size: 25px;
+    }
+
+    .landimg{
+        width: 95vw;
+        text-align: left;
+    }
+
+    .landbtn{
+        font-size: 15px !important;
+    }
+
+    .profilecur{
+        margin-top: 10px;
+        padding-left: 15px;
+    }
 }
