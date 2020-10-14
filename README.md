@@ -11,6 +11,9 @@ With Mentored, anyone (even you!) can easily find free resources curated in a si
 
 In fact, it doesn't stop there. Mentored allows real people to mentor the future generation of developers and point them to right direction, making sure they can (to take words from our friends at MLH) truly level up. 🆙
 
+## 🌐 Where can I find it?
+Find us on [mentored-space.herokuapp.com](https://mentored-space.herokuapp.com)! Too long to type, fret not, we are moving soon to [mentored.space](https://mentored.space)! 🌠
+
 ## 👨‍🏭 Who are we?
 This project was built by [Yash Khare](https://github.com/yashk2000), [Preet Shah](https://github.com/shahpreetk) and [Ankit Maity](https://github.com/QEDK).
 
@@ -77,6 +80,14 @@ And the server should be up and running on http://localhost:3000! 🚀
 
 ### 🧹 Linting
 All Python scripts are linted using [flake8](https://flake8.pycqa.org). To lint your files, simply install and run the `flake8` command in the project root and it should pick up the configuration automatically. GitHub Actions will automatically check your PR against `flake8` once submitted and provide helpful annotations in case of logical or stylistic errors. ℹ️
+
+## 🔜 What's next?
+* Integrate our service with mentorship providers like Raise.dev and Major League Hacking. 👩‍🏫
+* Enable recommendation systems and premium curations in partnership with other educational resources. 📚
+* Set up a forum for many-to-many interactions to speed up learning and make real engagement between people. 💬
+
+Where we want to be: 
+* A completely unified platform to bring software learners and teachers together - with the best resources possible. 🧑🏿‍🤝‍🧑🏿
 
 ## 📜 License
 This project is released under a free and open-source software license, Apache License 2.0 or later ([LICENSE](LICENSE) or https://www.apache.org/licenses/LICENSE-2.0). The documentation is also released under a free documentation license, namely the [GFDL v1.3](https://www.gnu.org/licenses/fdl-1.3.en.html) license or later.
