@@ -67,10 +67,7 @@ class ProfilePage extends Component {
                             <Col><i className='fab fa-linkedin-in fa-2x mr-2' aria-hidden="true"></i></Col>
                             <Col><i className='fab fa-medium-m fa-2x mr-2' aria-hidden="true"></i></Col>
                         </Row>
-                        <Row>
-                            <Col>.</Col>
-                        </Row>
-                        <Row>
+                        <Row className='mt-3'>
                             <Col><i className='fab fa-github fa-2x mr-2' aria-hidden="true"></i></Col>
                             <Col><i className='far fa-envelope fa-2x mr-2' aria-hidden="true"></i></Col>
                             <Col><i className='fab fa-telegram-plane fa-2x mr-2' aria-hidden="true"></i></Col>
