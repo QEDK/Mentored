@@ -29,14 +29,6 @@ class App extends Component {
         uid: cookies.get('uid') || cookies.set('uid', "1234", '/')
     };
 }
-  // componentDidMount(loggedin,uid, cookies){
-  //   loggedin = cookies.set('loggedin', loggedin, '/')
-  //   uid = cookies.set('uid', uid, '/')
-  //   this.setState({
-  //     loggedin: this.state.loggedin,
-  //     uid: this.state.uid
-  //   })
-  // }
   render() {
     return (
       <CookiesProvider>
