@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom';
 import { Form, Row, Col, Container } from 'react-bootstrap';
 import axios from 'axios'
 import MentorList from '../components/MentorList';
+
 
 class MentorPage extends Component {
     constructor() {
@@ -38,11 +38,13 @@ class MentorPage extends Component {
             })
     }
     render() {
+
         const { fields } = this.state;
         return (
             <>
             {<Row>
                 <Col md={3}>
+
                     <h3>Mentor's Profile</h3>
                     <Form>
                         <Form.Group controlId='name'>
@@ -72,6 +74,7 @@ class MentorPage extends Component {
                             <Col>.</Col>
                         </Row>
                         <Row>
+
                             <Col><i className='fab fa-github fa-2x mr-2' aria-hidden="true"></i></Col>
                             <Col><i className='far fa-envelope fa-2x mr-2' aria-hidden="true"></i></Col>
                             <Col><i className='fab fa-telegram-plane fa-2x mr-2' aria-hidden="true"></i></Col>

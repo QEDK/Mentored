@@ -13,6 +13,7 @@ import ProfilePage from './pages/ProfilePage';
 import { CookiesProvider } from "react-cookie";
 import MakeList from './pages/MakeList';
 import MentorPage from './pages/MentorPage'
+
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
@@ -28,14 +29,6 @@ class App extends Component {
         uid: cookies.get('uid') || cookies.set('uid', "1234", '/')
     };
 }
-  // componentDidMount(loggedin,uid, cookies){
-  //   loggedin = cookies.set('loggedin', loggedin, '/')
-  //   uid = cookies.set('uid', uid, '/')
-  //   this.setState({
-  //     loggedin: this.state.loggedin,
-  //     uid: this.state.uid
-  //   })
-  // }
   render() {
     return (
       <CookiesProvider>
