@@ -13,7 +13,7 @@ const MentorCard = ({profiles}) => {
                     <Card.Text>
                         Works at - {profiles.fields.company}
                     </Card.Text>
-                    <Card.Link href="#">Contact Mentor</Card.Link>
+                    <Card.Link href="#"><i class="far fa-comment fa-2x"></i></Card.Link>
                 </Link>
             </Card.Body>
         </Card>

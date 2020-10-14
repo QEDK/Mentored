@@ -7,13 +7,14 @@ const Header = ({cookies}) => {
     const [user, setUser] = useState(false)
     useEffect(() => {
 
-        if (document.cookie.split('loggedin=')[1].length > 5 ) {
+        if (document.cookie.split('loggedin=')[1].length > 5 && document.cookie.split('uid=')[1].length > 5) {
             setUser(true);
         }
     }, []);
 
     function logout(){
         document.cookie="loggedin=abcd"
+        document.cookie="uid=1234"
         setUser(false)
         localStorage.clear()
     }

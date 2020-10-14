@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import { Form, Button, Row, Col, Container } from 'react-bootstrap';
+import { Form, Row, Col, Container } from 'react-bootstrap';
 import axios from 'axios'
 import MentorList from '../components/MentorList';
-import {
-    EmailIcon, 
-    TelegramIcon
-} from "react-share";
-import { SocialIcon } from 'react-social-icons';
+
 
 class MentorPage extends Component {
     constructor() {
@@ -43,12 +38,14 @@ class MentorPage extends Component {
             })
     }
     render() {
-        const { username, fields } = this.state;
+
+        const { fields } = this.state;
         return (
             <>
             {<Row>
                 <Col md={3}>
-                    <h2>Mentor Profile</h2>
+
+                    <h3>Mentor's Profile</h3>
                     <Form>
                         <Form.Group controlId='name'>
                             <Form.Label>Name</Form.Label>
@@ -66,20 +63,21 @@ class MentorPage extends Component {
                         </Form.Group>
 
                     </Form>
-                    <h4>Contact</h4>
+                    <h4 className='mt-4' style={{color: "#f8c006"}}>Contact</h4>
                     <Container>
-                        <Row>
-                            <Col><SocialIcon url="https://twitter.com/" /></Col>
-                            <Col><SocialIcon url="https://linkedin.com/in" /></Col>
-                            <Col><SocialIcon url="https://medium.com/" /></Col>
+                        <Row className='mt-4'>
+                            <Col><i className='fab fa-twitter fa-2x mr-2' aria-hidden="true"></i></Col>
+                            <Col><i className='fab fa-linkedin-in fa-2x mr-2' aria-hidden="true"></i></Col>
+                            <Col><i className='fab fa-medium-m fa-2x mr-2' aria-hidden="true"></i></Col>
                         </Row>
                         <Row>
                             <Col>.</Col>
                         </Row>
                         <Row>
-                            <Col><SocialIcon url="https://github.com/" fgColor="#ffffff" bgColor="#000000"/></Col>
-                            <Col><EmailIcon size={50} round={true} iconFillColor='red'/></Col>
-                            <Col><TelegramIcon size={50} round={true} /></Col>
+
+                            <Col><i className='fab fa-github fa-2x mr-2' aria-hidden="true"></i></Col>
+                            <Col><i className='far fa-envelope fa-2x mr-2' aria-hidden="true"></i></Col>
+                            <Col><i className='fab fa-telegram-plane fa-2x mr-2' aria-hidden="true"></i></Col>
                         </Row>
                     </Container>
                 </Col>
