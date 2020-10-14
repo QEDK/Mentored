@@ -25,7 +25,6 @@ class ListPage extends Component {
                 books = data.books.split(',')
                 blogs = data.blogs.split(',')
                 videos = data.videos.split(',')
-                pk = i
                 this.setState({
                     list: list,
                     fields: fields,
